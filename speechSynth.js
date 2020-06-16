@@ -15,6 +15,9 @@ let synth = window.speechSynthesis; // init speech synthesizer
 let voices = []; // array vande voices beschikbaar in de browser
 
 
+const textArray = ['hello there', 'this pandemic is very annoying.', 'but since the start of the pandemic i got a new job.'];
+
+
 inputForm.onsubmit = function(event) {
     event.preventDefault();
     sayTheWord(inputTxt.value);
@@ -22,6 +25,12 @@ inputForm.onsubmit = function(event) {
 play.addEventListener('click', () => {sayTheWord(inputTxt.value);});
 pause.addEventListener('click', () => {synth.pause();});
 resume.addEventListener('click', () => {synth.resume();});
+
+play2.addEventListener('click', () => {
+    let toSay = "";
+    for (let i = 0; i < textArray.length; i++) toSay += textArray[i];
+    sayTheWord(toSay);
+});
 
 
 function populateVoiceList() {
@@ -60,3 +69,5 @@ pitch.onchange = function() {
 rate.onchange = function() {
     rateValue.textContent = rate.value;
     }
+
+
